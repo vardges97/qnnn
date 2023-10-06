@@ -83,7 +83,7 @@ def hamm(n):
 
 ls = [bool(None),bool('smt'),0,int(), bool()]
 ls.sort()
-print(ls)
+# print(ls)
 
 def rec_fac(n):
     if n == 1 or n ==0:
@@ -92,4 +92,27 @@ def rec_fac(n):
     else:
         return n*rec_fac(n-1)
 
-print(rec_fac(5))
+# print(rec_fac(5))
+
+def foo(n):
+
+    for i in range (1,n):
+        if i % 3 == 0:
+            yield i
+
+x = foo(12)
+print(next(x))
+print(next(x))
+
+def flatten_dict(dictt, separator=',', prefix=''):
+    res = {}
+    for key, value in dictt.items():
+        if isinstance(value, dict):
+            res.update(flatten_dict(value, separator, prefix + key + separator))
+        else:
+            res[prefix + key] = value
+    return res
+
+flat={'a':{'b':1},'c':2}
+res = flatten_dict(flat)
+print(str(res))
