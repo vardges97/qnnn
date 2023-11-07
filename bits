@@ -1,0 +1,78 @@
+def count1(num):
+    count = 0
+    while (num):
+        count += num & 1
+        num >>= 1
+    return count
+
+
+def count0(num):
+    count = 0
+    while num:
+        if (num & 1) == 0:
+            count += 1
+        num >>= 1
+    return count
+
+
+def power2(num):
+    if num & (num - 1) == 0:
+        print("2֊ի աստիճանա")
+    else:
+        print("2-ի աստիճան չի")
+
+
+def power4(num):
+    if (num & (num - 1) == 0) and (num - 1) % 3 == 0:
+        print("is pow")
+    else:
+        print("isnt pow")
+
+
+''' 2-րդ եղանակ
+
+def astjan4(num):
+    if num <= 0:
+        return False
+
+    if num & (num - 1) == 0 and num & 0x55555555:
+        return True
+    return False
+
+'''
+
+
+def gumarum(a, b):
+    while b != 0:
+        carry = a & b
+        a = a ^ b
+        b = carry << 1
+    return a
+
+
+def sub(a, b):
+    flag = 0
+    if a < b:
+        a ^= b
+        b ^= a
+        a ^= b
+        flag += 1
+    while b:
+        carry = (~a) & b
+        a = a ^ b
+        b = carry << 1
+    return -a if flag == 1 else a
+
+
+# str-i uniq-ությունա ստուգում
+
+st = "hello"
+flag = 0
+for i in st:
+    pos = ord(i)
+    if flag & (1 << pos) > 0:
+        print("false")
+        break
+    flag = flag | (1 << pos)
+else:
+    print("exav")
