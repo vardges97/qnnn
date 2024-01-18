@@ -21,6 +21,17 @@ print(list(enumerrate(ls)))
 #         return x
 #     return inner
 
+import time
+def timing(func):
+    def inner(*args,**kwargs):
+        start = time.time()
+        x = func(*args,**kwargs)
+        end = time.time()
+        final = end - start
+        print(f'function{func.__name__!r} executed in {(final):.4f}s')
+        return x
+    return inner
+
 def make_multiplier(n):
     def multiply(x):
         yield lambda n: lambda x: x*n
