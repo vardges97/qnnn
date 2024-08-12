@@ -4,16 +4,16 @@ def foo(bar = None):
     bar.append(1)
     return bar
 
-# print(foo())
-# print(foo())
-# print(foo([1,2,3,4]))
+# print(foo()),"""1"""
+# print(foo()),"""1"""
+# print(foo([1,2,3,4])),"""1,2,3,4,1"""
 
 def outer(n):
     ls = []
     for i in range(n):
         ls.append(lambda x: x *i)
     return ls
-
+"""12,12,12,12,12"""
 # res = outer(5)
 # for foo in res:
 #     print(foo(3))
@@ -46,6 +46,7 @@ def foo(n):
 
 a = [[]]*3
 a[1].append(1)
+"""[[1],[1],[1]]"""
 # print(a)
 
 def process_data(*args, **kwargs):
@@ -66,6 +67,7 @@ def foo(ls):
         print('list is empty')
 
 ls1 = [ i for i in range(0,5)]
+"""returns none because ls.sort just sorts"""
 # print(foo(ls1))
 
 def repeating_element(ls):
@@ -74,7 +76,7 @@ def repeating_element(ls):
         res ^=i
     return res
 ls = [1,2,3,1,2]
-print(repeating_element(ls))
+# print(repeating_element(ls))
 
 def targetfinder(list,target):
     for i in range(len(ls)):
@@ -92,6 +94,7 @@ def prev(n):
     for i in range(n):yield i
     for i in (x**2 for x in range(n)): yield i
 
+"""from 0 to 5 and from 0 to 25(everything squared)"""
 ls3 = list(prev(6))
 # print(ls3)
 
@@ -99,7 +102,7 @@ def bar(ls=[]):
     ls.append(("c++",'java'))
     print(ls)
     return ls
-
+"""[('c++', 'java')],[python('c++', 'java')],[('c++', 'java'),('c++', 'java')]"""
 # bar()
 # bar(['python'])
 # bar()
@@ -108,14 +111,16 @@ def outer(n):
     for i in range (4):
         yield lambda x:x*n
 
+"""15,15,15,15"""
 # res = outer(5)
 # for foo in res:
-#     # print(foo(3))
+#     print(foo(3))
 
 ls4 = [bool(None),[1,2,3,4],0,int(),bool(),{'name':'jey',"age":250}]
 ls5 = [[1,2,3]]
+"""adds [1,2,3] at the end"""
 ls4+=ls5
-print(ls4)
+# print(ls4)
 
 
 
@@ -128,4 +133,48 @@ def unpacker(ls):
             result.append(i)
     return result
 
-print(unpacker(ls))
+# print(unpacker(ls))
+
+ls7 =[1,2,3,3,4]
+def repelem(ls):
+    for i in range(len(ls)):
+        if ls[i] == ls[i-1]:
+            return True
+        else:
+            False
+print(repelem(ls7))
+
+
+x = [[i+(j*3) for i in range(1,4)]for j in range(0,3)]
+# print(x)
+
+import functools
+from functools import reduce
+fib = lambda n: reduce(lambda x, _: x + [x[-1] + x[-2]], range(n - 2), [0, 1])
+# print(fib(10))
+
+def sumofnums(num):
+    if num ==0:
+        return 0
+    return (num%10+sumofnums(int(num/10)))
+
+# s= 'a\0b\0c\0d'
+# print(len(s))
+# print(s)#7
+# s += 0#err
+# print(s)#contents
+# print(len(s))#7
+
+mat =[[1,2,3],[4,5,6],[7,8,9]]
+n =3
+def matdiagonal(mat,n):
+    principal = 0
+    sec = 0
+    for i in range(0,n):
+        for j in range(0,n):
+            if (i==j):
+                principal+= mat[i][j]
+            if (i+j) == (n-1):
+                sec += mat[i][j]
+    return sec
+print(matdiagonal(mat,n))
