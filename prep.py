@@ -153,6 +153,8 @@ from functools import reduce
 fib = lambda n: reduce(lambda x, _: x + [x[-1] + x[-2]], range(n - 2), [0, 1])
 # print(fib(10))
 
+fact = lambda x: 1 if x == 0 else x * fact(x-1)
+"""you can have a recursion with lambda if you name the lambda"""
 def sumofnums(num):
     if num ==0:
         return 0
@@ -178,3 +180,4 @@ def matdiagonal(mat,n):
                 sec += mat[i][j]
     return sec
 print(matdiagonal(mat,n))
+
