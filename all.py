@@ -1,14 +1,29 @@
-def acad_zip(*iterables, strict=False):
-    iterators = [iter(iterable) for iterable in iterables]
-    while True:
-        try:
-            current_tuple = tuple(next(iterator) for iterator in iterators)
-            yield current_tuple
-        except StopIteration:
-            return
 
 
-def academy_map( func, *iterables):
+# def my_zip(*iterables, strict=False):
+#doesnt work right
+#     iterators = [iter(iterable) for iterable in iterables]
+#     while True:
+#         try:
+#             current_tuple = tuple(next(iterator) for iterator in iterators)
+#             yield current_tuple
+#         except StopIteration:
+#             return
+            
+def my_zip(*iterables, strict=False):  
+  iterators = [iter(it) for it in iterables]
+  res = []
+  while True:
+    try:
+      res.append(tuple([next(it) for it in iterators]))
+      print("no exception")
+    except StopIteration:
+      print("exception")
+      break
+  return res            
+
+
+def my_map( func, *iterables):
     iterators = [iter(iterator) for iterator in iterables]
     while True:
         try:
@@ -18,13 +33,13 @@ def academy_map( func, *iterables):
             return
 
 
-def acadd_enumerate(iterable, start=0):
+def my_enumerate(iterable, start=0):
     for item in iterable:
         yield start, item
         start +=1
 
 
-def acad_filter(func,iterable):
+def my_filter(func,iterable):
     if func is None:
         filtered_items = [i for i in iterable if bool(i)]
     else:
@@ -33,7 +48,7 @@ def acad_filter(func,iterable):
         return item
 
 
-def academy_reduce(func,iterable,initial = None):
+def my_reduce(func,iterable,initial = None):
     iterator = iter(iterable)
     if initial is None:
         try:
