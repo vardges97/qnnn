@@ -64,8 +64,8 @@ def sub(a, b):
     return -a if flag == 1 else a
 
 
-# str-i uniq-ությունա ստուգում
-
+# str-i uniq-ություն
+# not optimal
 st = "hello"
 flag = 0
 for i in st:
