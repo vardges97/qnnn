@@ -5,7 +5,7 @@
 # res = [[0,0,0],
 #        [0,0,0],
 #        [0,0,0]]
-#
+#transposing the matrix
 # for i in range(len(mat)):
 #     for j in range(len(mat[0])):
 #         res[j][i]=mat[i][j]
@@ -44,6 +44,7 @@
 # print(commons(ls1,ls2))
 
 # def poweroftwo(x):
+##not optimal
 #
 #    return (x and(not(x & (x-1))))
 #
