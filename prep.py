@@ -179,5 +179,40 @@ def matdiagonal(mat,n):
             if (i+j) == (n-1):
                 sec += mat[i][j]
     return sec
-print(matdiagonal(mat,n))
+# print(matdiagonal(mat,n))
 
+def outer(n):
+    for i in range(4):
+        yield lambda x:x*n
+# prints 15,15,15,15 in range of 4 3*15
+res = outer(5)
+for foo in res:
+    print(foo(3))
+
+
+def sorter(ls):
+    for i in range(0,len(ls)):
+        for j in range(i+1,len(ls)):
+            if i >= j:
+                ls[i],ls[i] = ls[j],ls[i]
+
+
+ls = [bool(None), bool('muchacha'), 0, int(), bool()]
+
+
+ls.sort()
+
+print(ls)
+
+# def custom_filter(fn, iterable):
+#   res = []
+
+#   if fn is None:
+#     for item in iterable:
+#       if item == True:
+#         res.append(item)
+#   else:
+#     for item in iterable:
+#       if fn(item):
+#         res.append(item)
+#   return res
