@@ -198,11 +198,8 @@ def sorter(ls):
 
 
 ls = [bool(None), bool('muchacha'), 0, int(), bool()]
-
-
 ls.sort()
-
-print(ls)
+# print(ls)
 
 # def custom_filter(fn, iterable):
 #   res = []
@@ -216,3 +213,34 @@ print(ls)
 #       if fn(item):
 #         res.append(item)
 #   return res
+
+def memorize(fn):
+  cache = {}
+  def wrapper(*args, **kwargs):
+
+    key = str(args)
+    key = key + str(kwargs)
+    if cache.get(key):
+      return cache.get(key)
+    result = fn(*args, **kwargs)
+    cache[key] = result
+    return result
+  wrapper.cache = cache
+
+
+#better way
+def memoize(func):
+    cache = func.cache = {}
+    @functools.wraps(func)
+    def inner(*args, **kwargs):
+        key = str(args) + str(kwargs)
+        if key not in cache:
+            cache[key] = func(*args, **kwargs)
+        return cache[key]
+    return inner
+
+
+ls8 = [bool(None),[1,2,3,4],0,int(),bool(),{'name':'james',"age":23}]
+lis=[[1,2,3]]
+ls8 += lis
+print (ls8)
